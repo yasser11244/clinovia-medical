@@ -16,9 +16,10 @@ type IconName =
   | "menu"
   | "close"
   | "check"
-  | "play"
   | "location"
-  | "linkedin";
+  | "linkedin"
+  | "spark"
+  | "clock";
 
 function Icon({
   name,
@@ -100,8 +101,6 @@ function Icon({
 
     check: <path d="m5 12 4 4L19 6" />,
 
-    play: <path d="m9 6 9 6-9 6V6Z" />,
-
     location: (
       <>
         <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
@@ -114,7 +113,19 @@ function Icon({
         <rect x="4" y="9" width="3" height="10" />
         <path d="M5.5 5.5h.01" />
         <path d="M10 19v-6c0-2.2 1.3-3.5 3.2-3.5 2.1 0 3.3 1.4 3.3 4V19" />
-        <path d="M10 13c0-2.2 1.3-3.5 3.2-3.5" />
+      </>
+    ),
+
+    spark: (
+      <>
+        <path d="M12 2 14 10l8 2-8 2-2 8-2-8-8-2 8-2 2-8Z" />
+      </>
+    ),
+
+    clock: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
       </>
     ),
   };
@@ -127,16 +138,19 @@ const capabilities = [
     number: "01",
     title: "Medical Assistance",
     text: "Professional support and clear coordination for healthcare needs across different situations.",
+    label: "CLARITY",
   },
   {
     number: "02",
     title: "Global Coordination",
     text: "A structured approach designed to make international healthcare communication easier to navigate.",
+    label: "CONNECTION",
   },
   {
     number: "03",
     title: "Case Support",
     text: "Organized follow-up and professional communication throughout the support journey.",
+    label: "CONTINUITY",
   },
 ];
 
@@ -160,6 +174,7 @@ const standards = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCapability, setActiveCapability] = useState("01");
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -172,7 +187,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* NAVIGATION */}
       <header className="site-header">
         <a className="brand" href="#home" onClick={closeMenu}>
           <span className="brand-symbol">
@@ -212,7 +226,6 @@ function App() {
         </button>
       </header>
 
-      {/* MOBILE NAVIGATION */}
       <div className={`mobile-navigation ${menuOpen ? "is-open" : ""}`}>
         <div className="mobile-nav-links">
           <a href="#home" onClick={closeMenu}>Home</a>
@@ -332,10 +345,16 @@ function App() {
 
         {/* IMAGE STATEMENT */}
         <section className="image-statement">
-          <div className="statement-image" />
+          <div className="statement-image">
+            <div className="statement-image-label">
+              <span>PRECISION</span>
+              <span />
+              <span>HUMANITY</span>
+            </div>
+          </div>
 
           <div className="statement-panel">
-            <span className="panel-number">02</span>
+            <span className="panel-number">02 / OUR VIEW</span>
 
             <blockquote>
               “When health matters,
@@ -343,10 +362,16 @@ function App() {
               clarity matters too.”
             </blockquote>
 
-            <p>
-              A more thoughtful way to approach medical support and
-              coordination.
-            </p>
+            <div className="statement-panel-footer">
+              <p>
+                A more thoughtful way to approach medical support and
+                coordination.
+              </p>
+
+              <span className="statement-mark">
+                <Icon name="spark" size={21} />
+              </span>
+            </div>
           </div>
         </section>
 
@@ -366,15 +391,30 @@ function App() {
 
           <div className="capabilities-list">
             {capabilities.map((item) => (
-              <article className="capability-item" key={item.number}>
+              <article
+                className={`capability-item ${
+                  activeCapability === item.number ? "is-active" : ""
+                }`}
+                key={item.number}
+                onMouseEnter={() => setActiveCapability(item.number)}
+                onFocus={() => setActiveCapability(item.number)}
+                tabIndex={0}
+              >
                 <span className="capability-number">{item.number}</span>
 
-                <h3>{item.title}</h3>
+                <div className="capability-title">
+                  <span className="capability-label">{item.label}</span>
+                  <h3>{item.title}</h3>
+                </div>
 
                 <p>{item.text}</p>
 
                 <span className="capability-arrow">
                   <Icon name="arrow" size={22} />
+                </span>
+
+                <span className="capability-background-number">
+                  {item.number}
                 </span>
               </article>
             ))}
@@ -419,10 +459,18 @@ function App() {
                 <span>Clear communication</span>
               </div>
             </div>
+
+            <div className="global-signature">
+              <span className="signature-line" />
+              <span>HEALTHCARE WITHOUT BORDERS</span>
+            </div>
           </div>
 
           <div className="global-visual">
             <div className="global-image" />
+
+            <div className="global-orbit orbit-one" />
+            <div className="global-orbit orbit-two" />
 
             <div className="global-caption">
               <span className="caption-icon">
@@ -473,6 +521,12 @@ function App() {
               <p>Clear communication remains important throughout the journey.</p>
             </article>
           </div>
+
+          <div className="process-footer-line">
+            <span>ONE CLEAR PATH</span>
+            <span className="process-long-line" />
+            <span>CLINOVIA MEDICAL</span>
+          </div>
         </section>
 
         {/* STANDARDS */}
@@ -515,6 +569,7 @@ function App() {
         {/* CONTACT */}
         <section className="contact-section" id="contact">
           <div className="contact-watermark">C</div>
+          <div className="contact-grid-lines" />
 
           <div className="contact-content">
             <p className="section-eyebrow light">LET'S TALK</p>
@@ -579,6 +634,8 @@ function App() {
 
       {/* FOOTER */}
       <footer className="site-footer">
+        <div className="footer-accent-line" />
+
         <div className="footer-top">
           <div className="footer-brand-column">
             <a className="brand footer-brand" href="#home">
@@ -596,6 +653,11 @@ function App() {
               Medical assistance and professional healthcare coordination with
               an international perspective.
             </p>
+
+            <div className="footer-statement">
+              <Icon name="spark" size={15} />
+              <span>Healthcare without borders.</span>
+            </div>
           </div>
 
           <div className="footer-navigation">
@@ -624,7 +686,7 @@ function App() {
         <div className="footer-bottom">
           <span>© 2026 Clinovia Medical. All rights reserved.</span>
 
-          <span>Healthcare without borders.</span>
+          <span>Designed around clarity and confidence.</span>
         </div>
       </footer>
 
