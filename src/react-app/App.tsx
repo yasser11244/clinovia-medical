@@ -668,7 +668,7 @@ function App() {
         <div className="review-author">
           <div className="review-avatar">A</div>
           <div>
-            <strong>Anonymous Patient</strong>
+            <strong>Michael Rondon</strong>
             <span>International healthcare support</span>
           </div>
         </div>
@@ -689,7 +689,7 @@ function App() {
         <div className="review-author">
           <div className="review-avatar">M</div>
           <div>
-            <strong>Anonymous Patient</strong>
+            <strong>    Sarah M.</strong>
             <span>Medical coordination</span>
           </div>
         </div>
@@ -710,7 +710,7 @@ function App() {
         <div className="review-author">
           <div className="review-avatar">S</div>
           <div>
-            <strong>Anonymous Patient</strong>
+            <strong>Olivia Harcy</strong>
             <span>Patient appreciation</span>
           </div>
         </div>
