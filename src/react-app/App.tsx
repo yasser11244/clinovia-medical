@@ -631,7 +631,98 @@ function App() {
           </div>
         </section>
       </main>
+{/* REVIEWS */}
+<section className="reviews-section" id="reviews">
+  <div className="reviews-inner">
+    <div className="reviews-heading">
+      <p className="section-eyebrow">
+        <span className="kicker-line" />
+        PATIENT FEEDBACK
+      </p>
 
+      <h2>
+        Trusted care.
+        <em>Remembered for the people behind it.</em>
+      </h2>
+
+      <p>
+        Thoughtful communication, professional coordination, and a team
+        committed to making every patient feel supported throughout the
+        journey.
+      </p>
+    </div>
+
+    <div className="reviews-grid">
+      <article className="review-card review-card-featured">
+        <div className="review-top">
+          <span className="review-mark">“</span>
+          <span className="review-label">PATIENT EXPERIENCE</span>
+        </div>
+
+        <blockquote>
+          The doctors were incredibly professional and genuinely supportive.
+          Everything was explained clearly, and I always felt that someone was
+          available when I needed guidance.
+        </blockquote>
+
+        <div className="review-author">
+          <div className="review-avatar">A</div>
+          <div>
+            <strong>Anonymous Patient</strong>
+            <span>International healthcare support</span>
+          </div>
+        </div>
+      </article>
+
+      <article className="review-card">
+        <div className="review-top">
+          <span className="review-mark">“</span>
+          <span className="review-label">PROFESSIONAL CARE</span>
+        </div>
+
+        <blockquote>
+          What stood out most was how cooperative the medical team was.
+          They were organized, responsive, and made a complicated situation
+          feel much easier to manage.
+        </blockquote>
+
+        <div className="review-author">
+          <div className="review-avatar">M</div>
+          <div>
+            <strong>Anonymous Patient</strong>
+            <span>Medical coordination</span>
+          </div>
+        </div>
+      </article>
+
+      <article className="review-card">
+        <div className="review-top">
+          <span className="review-mark">“</span>
+          <span className="review-label">PERSONAL THANKS</span>
+        </div>
+
+        <blockquote>
+          Special thanks to Dr. Yasser for his kindness, professionalism, and
+          patience. His support and clear communication made a real difference
+          during an important time.
+        </blockquote>
+
+        <div className="review-author">
+          <div className="review-avatar">S</div>
+          <div>
+            <strong>Anonymous Patient</strong>
+            <span>Patient appreciation</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div className="reviews-bottom">
+      <span className="reviews-line" />
+      <p>Clarity in communication. Confidence in care.</p>
+    </div>
+  </div>
+</section>
       {/* FOOTER */}
       <footer className="site-footer">
         <div className="footer-accent-line" />
